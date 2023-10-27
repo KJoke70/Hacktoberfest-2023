@@ -4,8 +4,9 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir  numpy pillow
 
 RUN mkdir /app
+RUN mkdir /images
 
-COPY ./src/* /app
+COPY ./src/c2.py /app/c2.py
+COPY ./src/images/* /images/
 
-# ENTRYPOINT sh -c "echo -en 'PX ${X} ${Y} ${COLOR}\n' | nc -q1 localhost 1234"
 ENTRYPOINT ["python", "/app/c2.py"]
